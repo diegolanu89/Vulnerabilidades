@@ -1,0 +1,40 @@
+{
+  "name": "vulnerabilidad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "start:mem": "cross-env MODO_PERSISTENCIA=MEM node app.js",
+    "start:file": "cross-env MODO_PERSISTENCIA=FILE node app.js",
+    "start:db": "cross-env MODO_PERSISTENCIA=DB node app.js",
+    "dev": "nodemon app.js",
+    "dev:mem": "cross-env MODO_PERSISTENCIA=MEM nodemon app.js",
+    "dev:file": "cross-env MODO_PERSISTENCIA=FILE nodemon app.js",
+    "dev:db": "echo '\u001b[1;33m🟠 Iniciando servidor Node.js con persistencia DB...\u001b[0m' && cross-env MODO_PERSISTENCIA=DB nodemon app.js",
+    "mongo:start": "echo '\u001b[1;32m🟢 Iniciando servicio de MongoDB...\u001b[0m' && brew services start mongodb-community@7.0",
+    "mongo:stop": "echo '\u001b[1;31m🔴 Deteniendo servicio de MongoDB...\u001b[0m' && brew services stop mongodb-community@7.0",
+    "mongo:restart": "echo '\u001b[1;36m🔁 Reiniciando servicio de MongoDB...\u001b[0m' && brew services restart mongodb-community@7.0",
+    "mongo:shell": "echo '\u001b[1;34m🔵 Abriendo consola Mongo Shell...\u001b[0m' && mongosh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^8.15.2",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.10"
+  }
+}

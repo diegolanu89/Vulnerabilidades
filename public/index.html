@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estadísticas de Números</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Estadísticas de Números</h1>
+
+  <div class="card">
+    <h2>Agregar número</h2>
+    <input type="number" id="numero" placeholder="Ej: 42">
+    <button onclick="agregarNumero()">Agregar</button>
+  </div>
+
+  <div class="card">
+    <button onclick="ejecutarServicio('api/numeros/entrada')">Ver todos los números</button>
+    <button onclick="ejecutarServicio('api/numeros/promedio')">Ver promedio</button>
+    <button onclick="ejecutarServicio('api/numeros/minmax')">Ver mínimo y máximo</button>
+    <button onclick="ejecutarServicio('api/numeros/cantidad')">Ver cantidad</button>
+  </div>
+
+  <div class="card" id="resultados">
+    <h2>Resultados:</h2>
+    <pre id="salida">(Aquí aparecerán los datos)</pre>
+  </div>
+
+  <script>
+    async function ejecutarServicio(endpoint) {
+      try {
+        const res = await fetch(`/${endpoint}`);
+        if (!res.ok) throw new Error('Error en la consulta');
+        const data = await res.json();
+        document.getElementById('salida').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('salida').textContent = 'Error: ' + error.message;
+      }
+    }
+
+    async function agregarNumero() {
+      const valor = document.getElementById('numero').value;
+      if (!valor) return alert("Ingresá un número válido");
+
+      try {
+        const res = await fetch('/api/numeros/entrada', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ numero: Number(valor) })
+        });
+
+        if (!res.ok) throw new Error('Error al guardar el número');
+
+        const data = await res.json();
+        document.getElementById('salida').textContent = JSON.stringify(data, null, 2);
+        document.getElementById('numero').value = '';
+
+        ejecutarServicio('api/numeros/entrada');
+
+      } catch (error) {
+        document.getElementById('salida').textContent = 'Error: ' + error.message;
+      }
+    }
+  </script>
+</body>
+</html>

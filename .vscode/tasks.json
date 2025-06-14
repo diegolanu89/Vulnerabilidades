@@ -1,0 +1,64 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🍃 Iniciar MongoDB",
+      "type": "shell",
+      "command": "./scripts/mongoService.sh",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+      },
+      "icon": {
+        "id": "database",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "🐚 Abrir Mongo Shell",
+      "type": "shell",
+      "command": "./scripts/mongoShell.sh",
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "new"
+      },
+      "icon": {
+        "id": "terminal",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "🚀 Iniciar servidor Node",
+      "type": "shell",
+      "command": "npm run dev:db",
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated"
+      },
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiYellow"
+      }
+    },
+    {
+      "label": "🔧 Iniciar todo",
+      "dependsOn": [
+        "🍃 Iniciar MongoDB",
+        "🚀 Iniciar servidor Node",
+        "🐚 Abrir Mongo Shell"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "shared"
+      },
+      "icon": {
+        "id": "rocket",
+        "color": "terminal.ansiCyan"
+      }
+    }
+  ]
+}
