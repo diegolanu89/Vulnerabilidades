@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cambiar Email</title>
+</head>
+<body>
+  <h1>Cambiar Email</h1>
+  <form action="/cambiar-email" method="POST">
+    <input type="email" name="email" placeholder="Nuevo Email" required />
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    <button type="submit">Actualizar</button>
+  </form>
+</body>
+</html>

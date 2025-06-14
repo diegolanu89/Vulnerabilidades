@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos</title>
+</head>
+<body>
+  <h1>Bienvenido</h1>
+
+  <h2>Comentarios</h2>
+  <ul>
+    <% comentarios.forEach(function(comentario) { %>
+      <li><%= comentario %></li>
+    <% }); %>
+  </ul>
+
+  <form action="/comentario" method="POST">
+    <input type="text" name="comentario" required />
+    <button type="submit">Agregar comentario</button>
+  </form>
+
+  <a href="/cambiar-email">Cambiar Email</a>
+</body>
+</html>

@@ -36,6 +36,7 @@ Este proyecto demuestra una arquitectura modular para el manejo de distintas **p
    ```
    PORT=8080
    MODO_PERSISTENCIA=DB
+   MONGO_URI = [Aquí va la url donde se monto el servidor local de su mongoDb]
    ```
 
 ---
